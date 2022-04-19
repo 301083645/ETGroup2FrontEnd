@@ -6,31 +6,33 @@ import { useNavigate } from "react-router-dom"
 import { useParams, Navigate } from "react-router-dom"
 const { gql, useQuery, useMutation } = require("@apollo/client")
 
-const CREATE_VitalSign = gql`
-	mutation CreateVitalSign(
+const CREATE_ASSIGN_VitalSign = gql`
+	mutation CreateAndAssignVitalSign(
 		$bodyTemp: String!
 		$heartRate: String!
 		$bloodPressure: String!
 		$respiratoryRate: String!
+		$patientId: String!
 	) {
-		createVitalSign(
+		createAndAssignVitalSign(
 			bodyTemp: $bodyTemp
 			heartRate: $heartRate
 			bloodPressure: $bloodPressure
 			respiratoryRate: $respiratoryRate
+			patientId: $patientId
 		) {
 			id
 		}
 	}
 `
-const ASSIGN_VitalSign = gql`
-	mutation AssignVitalSign($vitalSignId: String!,$patientId:String!) 
-    {
-		assignVitalSign(vitalSignId: $vitalSignId,patientId:$patientId) {
-			id
-		}
-	}
-`
+// const ASSIGN_VitalSign = gql`
+// 	mutation AssignVitalSign($vitalSignId: String!,$patientId:String!) 
+//     {
+// 		assignVitalSign(vitalSignId: $vitalSignId,patientId:$patientId) {
+// 			id
+// 		}
+// 	}
+// `
 
 
 function AddVitalSign(){
@@ -48,26 +50,26 @@ function AddVitalSign(){
 	const navigate = useNavigate()
 
 	const [
-		createVitalSign,
+		createAndAssignVitalSign,
 		{
-			data: createVitalSignData,
-			loading: createVitalSignLoading,
-			error: createVitalSignError
+			data: createAndAssignVitalSignData,
+			loading: createAndAssignVitalSignLoading,
+			error: createAndAssignVitalSignError
 		}
-	] = useMutation(CREATE_VitalSign, {
+	] = useMutation(CREATE_ASSIGN_VitalSign, {
         onCompleted: () => {
 			navigate("/nurse/patients")
 		}
 	})
 
-     const [
-	 	assignVitalSign,
-	 	{
-	 		data: deleteVitalSignData,
-	 		loading: deleteVitalSignLoading,
-	 		error: deleteVitalSignError
-	 	}
-	 ] = useMutation(ASSIGN_VitalSign)
+    //  const [
+	//  	assignVitalSign,
+	//  	{
+	//  		data: deleteVitalSignData,
+	//  		loading: deleteVitalSignLoading,
+	//  		error: deleteVitalSignError
+	//  	}
+	//  ] = useMutation(ASSIGN_VitalSign)
 
     
 
@@ -77,18 +79,19 @@ function AddVitalSign(){
 	
 	const handleCreateVitalSign = async (e) => {
 		e.preventDefault()
-        const vitalSignId = e.target.value
-        console.log('2upto event handler create vital sign' + vitalSign.bloodPressure)
-		createVitalSign({
-			variables: vitalSign
+        console.log('Check vital sign' +" "+ vitalSign.bloodPressure)
+		
+		createAndAssignVitalSign({
+			variables: {
+				bodyTemp: vitalSign.bodyTemp,
+				heartRate: vitalSign.heartRate,
+				bloodPressure: vitalSign.bloodPressure,
+				respiratoryRate: vitalSign.respiratoryRate,
+				patientId:patientId
+			}
 		})
         
-        assignVitalSign({
-            variables: {
-                vitalSignId,
-                patientId: patientId
-            }
-        })
+    
         
 	}
 
