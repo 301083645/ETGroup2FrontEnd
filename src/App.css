@@ -1,0 +1,16 @@
+.center-container{
+    width: 80%;
+    margin: auto;
+}
+
+.app-nav{
+    padding: 30px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.app-logo{
+    font: 2em sans-serif;
+    font-weight: bold;
+    color: #003049;
+}
