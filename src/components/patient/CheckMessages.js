@@ -44,7 +44,7 @@ function CheckMessages(){
 				<Table striped bordered hover variant="dark">
 					<thead>
 						<tr>
-							<th>Message</th>
+							<th>Daily Tips</th>
 							
 						</tr>
 					</thead>
