@@ -46,7 +46,7 @@ import SendMessage from "./components/nurse/SendMessage"
 // Patient Navigation
 ///////////////////////////
 import { Router4Patient } from "./components/patient/Router4Patient"
-
+import {Video} from "./components/patient/Video"
 
 
 
@@ -137,10 +137,10 @@ function App() {
 					<Route path="patient-register" element={<Register4Patient/>} />
 					<Route path="login" element={<Login />} />
 					<Route
-						path="patient/..."
+						path="patient/video"
 						element={
 							<Router4Patient>
-								<></>
+								<Video/>
 							</Router4Patient>
 						}
 					/>
