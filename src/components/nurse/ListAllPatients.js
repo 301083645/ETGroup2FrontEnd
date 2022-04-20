@@ -95,7 +95,7 @@ function ListAllPatients() {
 										variant="secondary"
 										onClick={(e) => handleMessage(e)}
 									>
-										Send Message
+										Send Daily Tip
 							</Button>
 						</Card>
 					</Col>
