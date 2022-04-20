@@ -38,7 +38,7 @@ import { Router4Nurse } from "./components/nurse/Router4Nurse"
 import ListAllPatients from "./components/nurse/ListAllPatients"
 import AddVitalSign from "./components/nurse/AddVitalSign"
 import History from "./components/nurse/History"
-import Message from "./components/nurse/Message"
+import SendMessage from "./components/nurse/SendMessage"
 
 
 
@@ -184,7 +184,7 @@ function App() {
 						path="nurse/message/:patientId"
 						element={
 							<Router4Nurse>
-								<Message/>
+								<SendMessage/>
 							</Router4Nurse>
 						}
 					></Route>
