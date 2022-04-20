@@ -97,7 +97,7 @@ function App() {
 										Motivational Video
 									</NavDropdown.Item>
 									<NavDropdown.Item as={Link} to="/patient/messages/:patientId">
-										Check Messages
+										View Daily Tips
 									</NavDropdown.Item>
 								</NavDropdown>
 							)
