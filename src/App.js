@@ -46,7 +46,7 @@ import SendMessage from "./components/nurse/SendMessage"
 // Patient Navigation
 ///////////////////////////
 import { Router4Patient } from "./components/patient/Router4Patient"
-import {Video} from "./components/patient/Video"
+import Video from "./components/patient/Video"
 
 
 
@@ -92,17 +92,17 @@ function App() {
 								</NavDropdown.Item>
 							</NavDropdown>
 
-							{/* {role === "patient" && (
-								<NavDropdown title="-----" id="basic-nav-dropdown">
-									<NavDropdown.Item as={Link} to="/patient/...">
-										------------
+							{role === "patient" && (
+								<NavDropdown title="Menu" id="basic-nav-dropdown">
+									<NavDropdown.Item as={Link} to="/patient/video">
+										Motivational Video
 									</NavDropdown.Item>
 									<NavDropdown.Item as={Link} to="/patient/...">
 										------------
 									</NavDropdown.Item>
 								</NavDropdown>
-							)}
-							*/}
+							)
+							}
 							{role === "nurse" && (
 								<NavDropdown title="Management" id="basic-nav-dropdown">
 	
