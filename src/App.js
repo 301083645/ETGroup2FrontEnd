@@ -39,6 +39,10 @@ import ListAllPatients from "./components/nurse/ListAllPatients"
 import AddVitalSign from "./components/nurse/AddVitalSign"
 import History from "./components/nurse/History"
 import SendMessage from "./components/nurse/SendMessage"
+import CheckAlert from "./components/nurse/CheckAlert"
+
+import SendSurvey from "./components/nurse/SendSurvey"
+import CheckSurvey from "./components/nurse/CheckSurvey"
 
 
 ///////////////////////////
@@ -47,7 +51,7 @@ import SendMessage from "./components/nurse/SendMessage"
 import { Router4Patient } from "./components/patient/Router4Patient"
 import Video from "./components/patient/Video"
 import CheckMessages from "./components/patient/CheckMessages"
-
+import SendAlert from "./components/patient/SendAlert"
 
 function App() {
 	const [userEmail, setUserEmail] = useState("")
@@ -99,6 +103,9 @@ function App() {
 									<NavDropdown.Item as={Link} to="/patient/messages/:patientId">
 										Check Messages
 									</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to="/patient/alert">
+										Send Alert
+									</NavDropdown.Item>
 								</NavDropdown>
 							)
 							}
@@ -108,8 +115,8 @@ function App() {
 									<NavDropdown.Item as={Link} to="nurse/patients">
 										List of All Patients
 									</NavDropdown.Item>
-									<NavDropdown.Item as={Link} to="nurse/../..">
-										------------
+									<NavDropdown.Item as={Link} to="....">
+										.....
 									</NavDropdown.Item>
 									<NavDropdown.Item as={Link} to="nurse/.....">
 										------------
@@ -152,6 +159,14 @@ function App() {
 						}
 					/>
 					
+					<Route
+						path="patient/alert"
+						element={
+							<Router4Patient>
+								<SendAlert/>
+							</Router4Patient>
+						}
+					/>
 
 					<Route
 						exact
@@ -162,6 +177,7 @@ function App() {
 							</Router4Nurse>
 						}
 					/>
+				
 
 					<Route
 						path="nurse/addVitalSign/:patientId"
@@ -184,6 +200,33 @@ function App() {
 						element={
 							<Router4Nurse>
 								<SendMessage/>
+							</Router4Nurse>
+						}
+					></Route>
+
+					<Route
+						path="nurse/alert/:patientId"
+						element={
+							<Router4Nurse>
+								<CheckAlert/>
+							</Router4Nurse>
+						}
+					></Route>
+
+					<Route
+						path="nurse/sendsurvey/:patientId"
+						element={
+							<Router4Nurse>
+								<SendSurvey/>
+							</Router4Nurse>
+						}
+					></Route>
+
+					<Route
+						path="nurse/checksurvey/:patientId"
+						element={
+							<Router4Nurse>
+								<CheckSurvey/>
 							</Router4Nurse>
 						}
 					></Route>

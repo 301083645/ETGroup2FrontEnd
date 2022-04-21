@@ -55,6 +55,26 @@ function ListAllPatients() {
 		navigate(`/nurse/message/${patientId}`)
 	}
 
+	const handleAlert = (e) => {
+		e.preventDefault()
+		const patientId = e.target.value
+		console.log(patientId)
+		navigate(`/nurse/alert/${patientId}`)
+	}
+
+	const handleSurvey = (e) => {
+		e.preventDefault()
+		const patientId = e.target.value
+		console.log(patientId)
+		navigate(`/nurse/sendsurvey/${patientId}`)
+	}
+
+	const handleSurvey2 = (e) => {
+		e.preventDefault()
+		const patientId = e.target.value
+		console.log(patientId)
+		navigate(`/nurse/checksurvey/${patientId}`)
+	}
 
 	return (
 		<div>
@@ -97,6 +117,31 @@ function ListAllPatients() {
 									>
 										Send Daily Tip
 							</Button>
+
+							<Button
+										value={patient.id}
+										variant="secondary"
+										onClick={(e) => handleAlert(e)}
+									>
+										Check Alert
+							</Button>
+
+							<Button
+										value={patient.id}
+										variant="secondary"
+										onClick={(e) => handleSurvey(e)}
+									>
+										Send Survey
+							</Button>
+
+							<Button
+										value={patient.id}
+										variant="secondary"
+										onClick={(e) => handleSurvey2(e)}
+									>
+										Check Survey
+							</Button>
+
 						</Card>
 					</Col>
 				))}
