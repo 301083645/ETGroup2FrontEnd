@@ -47,6 +47,7 @@ import SendMessage from "./components/nurse/SendMessage"
 import { Router4Patient } from "./components/patient/Router4Patient"
 import Video from "./components/patient/Video"
 import CheckMessages from "./components/patient/CheckMessages"
+import AI from "./components/patient/AI"
 
 
 function App() {
@@ -99,6 +100,9 @@ function App() {
 									<NavDropdown.Item as={Link} to="/patient/messages/:patientId">
 										View Daily Tips
 									</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to="/patient/ai">
+										Self Diagnosis
+									</NavDropdown.Item>
 								</NavDropdown>
 							)
 							}
@@ -148,6 +152,14 @@ function App() {
 						element={
 							<Router4Patient>
 								<CheckMessages/>
+							</Router4Patient>
+						}
+					/>
+					<Route
+						path="patient/ai"
+						element={
+							<Router4Patient>
+								<AI/>
 							</Router4Patient>
 						}
 					/>
