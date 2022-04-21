@@ -41,7 +41,7 @@ function CheckMessages(){
 			<br></br><br></br>
 			
 			{messages.length !== 0 && (
-				<Table striped bordered hover variant="dark">
+				<Table striped bordered hover variant="primary">
 					<thead>
 						<tr>
 							<th>Daily Tips</th>

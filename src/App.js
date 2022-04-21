@@ -51,7 +51,12 @@ import CheckSurvey from "./components/nurse/CheckSurvey"
 import { Router4Patient } from "./components/patient/Router4Patient"
 import Video from "./components/patient/Video"
 import CheckMessages from "./components/patient/CheckMessages"
+<<<<<<< HEAD
 import SendAlert from "./components/patient/SendAlert"
+=======
+import AI from "./components/patient/AI"
+
+>>>>>>> d88c11cb0d96c4d4a0c5cc70299e9412a39a4d10
 
 function App() {
 	const [userEmail, setUserEmail] = useState("")
@@ -101,7 +106,10 @@ function App() {
 										Motivational Video
 									</NavDropdown.Item>
 									<NavDropdown.Item as={Link} to="/patient/messages/:patientId">
-										Check Messages
+										View Daily Tips
+									</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to="/patient/ai">
+										Self Diagnosis
 									</NavDropdown.Item>
 									<NavDropdown.Item as={Link} to="/patient/alert">
 										Send Alert
@@ -155,6 +163,14 @@ function App() {
 						element={
 							<Router4Patient>
 								<CheckMessages/>
+							</Router4Patient>
+						}
+					/>
+					<Route
+						path="patient/ai"
+						element={
+							<Router4Patient>
+								<AI/>
 							</Router4Patient>
 						}
 					/>
