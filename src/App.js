@@ -51,12 +51,9 @@ import CheckSurvey from "./components/nurse/CheckSurvey"
 import { Router4Patient } from "./components/patient/Router4Patient"
 import Video from "./components/patient/Video"
 import CheckMessages from "./components/patient/CheckMessages"
-<<<<<<< HEAD
 import SendAlert from "./components/patient/SendAlert"
-=======
 import AI from "./components/patient/AI"
 
->>>>>>> d88c11cb0d96c4d4a0c5cc70299e9412a39a4d10
 
 function App() {
 	const [userEmail, setUserEmail] = useState("")

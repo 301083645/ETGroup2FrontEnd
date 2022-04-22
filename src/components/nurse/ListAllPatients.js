@@ -120,7 +120,7 @@ function ListAllPatients() {
 
 							<Button
 										value={patient.id}
-										variant="secondary"
+										variant="danger"
 										onClick={(e) => handleAlert(e)}
 									>
 										Check Alert
@@ -128,7 +128,7 @@ function ListAllPatients() {
 
 							<Button
 										value={patient.id}
-										variant="secondary"
+										variant="light"
 										onClick={(e) => handleSurvey(e)}
 									>
 										Send Survey
@@ -136,7 +136,7 @@ function ListAllPatients() {
 
 							<Button
 										value={patient.id}
-										variant="secondary"
+										variant="info"
 										onClick={(e) => handleSurvey2(e)}
 									>
 										Check Survey

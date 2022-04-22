@@ -24,6 +24,7 @@ const CREATE_SEND_Alert = gql`
 function SendAlert(){
 
     const patientId = localStorage.getItem("userId")
+	console.log("Patinet Id:" + patientId);
 
     const [alert, setAlert] = useState({
 		description: ""
@@ -41,6 +42,7 @@ function SendAlert(){
 		}
 	] = useMutation(CREATE_SEND_Alert, {
         onCompleted: () => {
+			console.log("Alert Sent:"+ patientId);
 			navigate("/home")
 		}
 	})
