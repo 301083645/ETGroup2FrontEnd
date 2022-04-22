@@ -67,9 +67,6 @@ function SendAlert(){
     return(
         <>
 			<br></br><br></br>
-			<div className="admin-div-css">
-		    <p>patient Id: {patientId}</p>
-			</div>
 
             <br></br><br></br>
 			<div className="admin-div-css">
