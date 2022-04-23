@@ -1,4 +1,4 @@
-import { useQuery, gql } from "@apollo/client"
+import { useQuery, gql, useMutation } from "@apollo/client"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import React, { useEffect, useState } from "react"
@@ -7,22 +7,22 @@ import { useSelector } from "react-redux"
 import { useParams, Navigate } from "react-router-dom"
 
 
-const GET_All_Surveys = gql`
-	query Patient($id: String!) {
-        patientVitalSign(id: $id){
-            id
-            surveys {
-                question1
-                answer1
-                question2
-                answer2
-                question3
-                answer3
-                question4
-                asnwer4
-            }
+const GET_SURVEYS = gql`
+query Patient($id: String!) {
+    patientVitalSign(id: $id){
+        id
+        surveys{
+            question1
+            answer1
+            question2
+            answer2
+            question3
+            answer3
+            question4
+            answer4
         }
     }
+}
 `
 
 function CheckSurvey(){
@@ -33,7 +33,7 @@ function CheckSurvey(){
 
     console.log("Survey - patientId:" + id);
 	
-    const { loading, error, data: surveyData, refetch } = useQuery(GET_All_Surveys, {
+    const { loading, error, data: surveyData, refetch } = useQuery(GET_SURVEYS, {
 		variables: { id },
 		fetchPolicy: "network-only",
 		onCompleted: () => {

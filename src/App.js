@@ -51,12 +51,10 @@ import CheckSurvey from "./components/nurse/CheckSurvey"
 import { Router4Patient } from "./components/patient/Router4Patient"
 import Video from "./components/patient/Video"
 import CheckMessages from "./components/patient/CheckMessages"
-<<<<<<< HEAD
 import SendAlert from "./components/patient/SendAlert"
-=======
+import SubmitSurvey from "./components/patient/SubmitSurvey"
 import AI from "./components/patient/AI"
 
->>>>>>> d88c11cb0d96c4d4a0c5cc70299e9412a39a4d10
 
 function App() {
 	const [userEmail, setUserEmail] = useState("")
@@ -114,6 +112,9 @@ function App() {
 									<NavDropdown.Item as={Link} to="/patient/alert">
 										Send Alert
 									</NavDropdown.Item>
+									<NavDropdown.Item as={Link} to="/patient/survey">
+										Submit Survey
+									</NavDropdown.Item>
 								</NavDropdown>
 							)
 							}
@@ -123,12 +124,7 @@ function App() {
 									<NavDropdown.Item as={Link} to="nurse/patients">
 										List of All Patients
 									</NavDropdown.Item>
-									<NavDropdown.Item as={Link} to="....">
-										.....
-									</NavDropdown.Item>
-									<NavDropdown.Item as={Link} to="nurse/.....">
-										------------
-									</NavDropdown.Item>
+									
 								</NavDropdown>
 							)} 
 						</Nav>
@@ -185,6 +181,15 @@ function App() {
 					/>
 
 					<Route
+						path="patient/survey"
+						element={
+							<Router4Patient>
+								<SubmitSurvey/>
+							</Router4Patient>
+						}
+					/>
+
+					<Route
 						exact
 						path="nurse/patients"
 						element={
@@ -193,6 +198,7 @@ function App() {
 							</Router4Nurse>
 						}
 					/>
+					
 				
 
 					<Route
