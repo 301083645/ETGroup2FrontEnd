@@ -98,11 +98,6 @@ function AddVitalSign(){
     return(
 <>
 			<br></br><br></br>
-			<div className="admin-div-css">
-			
-			<p>Test Add vital</p>
-            <p>patient Id: {patientId}</p>
-			</div>
 
             <br></br><br></br>
 			<div className="admin-div-css">
