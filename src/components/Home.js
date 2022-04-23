@@ -16,7 +16,7 @@ function Home() {
 			<h4>- Eunbee Lee</h4>
 			<h4>- Jihyeok Kim</h4>
 			<h4>- Erwin Josha Manuel</h4>
-			<h4>- Monk</h4>
+			<h4>- Khanna, Nakul </h4>
 		</div>
 	)
 }

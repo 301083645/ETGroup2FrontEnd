@@ -11,6 +11,7 @@ query Patient($id: String!) {
     patient(id: $id){
         id
         surveys{
+			id
             question1
             answer1
             question2
@@ -26,14 +27,14 @@ query Patient($id: String!) {
 
 const SUBMIT_SURVEY = gql`
 mutation SubmitSurvey(
-    $userId: String!
+    $surveyId: String!
     $answer1: String!
     $answer2: String!
     $answer3: String!
     $answer4: String!
 ) {
     submitSurvey(
-        userId: $userId
+        surveyId: $surveyId
         answer1: $answer1
         answer2: $answer2
         answer3: $answer3
@@ -48,6 +49,16 @@ function SubmitSurvey(){
     const [survey, setSurvey] = useState({
 	})
 
+	const [survey2, setSurvey2] = useState({
+		surveyId: "",
+		answer1: "",
+		answer2: "",
+		answer3: "",
+		answer4: ""
+	})
+
+	const[surveyId, setSurveyId] = useState({})
+
     const id = localStorage.getItem("userId")
 
     const token = useSelector((state) => state.auth.value.token)
@@ -61,6 +72,8 @@ function SubmitSurvey(){
 			console.log("========Success of GET SURVEY");
             console.log(surveyData)
 			setSurvey(surveyData.patient.surveys[0])
+			setSurveyId(surveyData.patient.surveys[0].id)
+			console.log(surveyData.patient.surveys[0].id)
 		}
 	})
 
@@ -72,21 +85,21 @@ function SubmitSurvey(){
 			error: submitSurveyError
 		}
 	] = useMutation(SUBMIT_SURVEY, {
-		variables: { id },
+		variables: { surveyId },
 		fetchPolicy: "network-only",
 		onCompleted: () => {
-			navigate("/patients/home")
+			navigate("/home")
 		}
 	})
 
     const onInputChange = (e) => {
-		setSurvey({ ...survey, [e.target.name]: e.target.value })
+		setSurvey2({ ...survey2, [e.target.name]: e.target.value })
 	}
 	const handleSubmitSurvey = async (e) => {
 		e.preventDefault()
-		submitSurvey({
-			variables: { ...survey, id }
-		})
+		submitSurvey({			
+			variables: { ...survey2, surveyId }
+		}).then(console.log("submit survey" + survey2.answer1))
 	}
 
     return (
@@ -100,7 +113,7 @@ function SubmitSurvey(){
 						type="txt"
 						placeholder="answer1"
 						name="answer1"
-						value={survey.answer1}
+						value={survey2.answer1}
 						onChange={(e) => onInputChange(e)}
 					/>
 				</Form.Group>
@@ -111,7 +124,7 @@ function SubmitSurvey(){
 						type="txt"
 						placeholder="answer2"
 						name="answer2"
-						value={survey.answer2}
+						value={survey2.answer2}
 						onChange={(e) => onInputChange(e)}
 					/>
 				</Form.Group>
@@ -122,7 +135,7 @@ function SubmitSurvey(){
 						type="txt"
 						placeholder="answer3"
 						name="answer3"
-						value={survey.answer3}
+						value={survey2.answer3}
 						onChange={(e) => onInputChange(e)}
 					/>
 				</Form.Group>
@@ -133,7 +146,7 @@ function SubmitSurvey(){
 						type="txt"
 						placeholder="answer4"
 						name="answer4"
-						value={survey.answer4}
+						value={survey2.answer4}
 						onChange={(e) => onInputChange(e)}
 					/>
 				</Form.Group>
